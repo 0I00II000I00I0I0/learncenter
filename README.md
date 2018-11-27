@@ -19,4 +19,4 @@ IDEA + JAVAa + MYSQL + MAVEN
 * 修改数据库配置，在learncenter/src/main/resources/application.properties文件中修改相应的数据源配置
 
 2.运行项目
-* 
+* 右键运行工程包中Spring Boot应用启动类的main函数，然后在浏览器访问：localhost:8080/center
