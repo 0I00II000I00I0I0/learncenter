@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑教程页面</title>
+</head>
+
+<body>
+    <h3>编辑教程</h3>
+    <form action="updatelearn" method="post">
+        <input type="hidden" name="id" th:value="${learn.id}"/> <br>
+        教程名称：<input type="text" name="title" th:value="${learn.title}"/><br>
+        作&nbsp;&nbsp;&nbsp;者：<input type="text" name="author" th:value="${learn.author}"/><br>
+        地&nbsp;&nbsp;&nbsp;址：<input type="text" name="url" th:value="${learn.url}"/><br>
+        添加人：<input type="text" name="title" th:value="${learn.createdby}" disabled="true"/><br>
+        修改人：<input type="text" name="title" th:value="${learn.updatedby}" disabled="true"/><br>
+        添加时间：<input type="date" name="title" th:value="${learn.created}" disabled="true"/><br>
+        上次修改时间：<input type="date" name="title" th:value="${learn.updated}" disabled="true"/>
+        <input type="submit" value="确定修改"/>
+        <input type="button" value="返回" onclick="javascript:history.back();"/>
+    </form>
+</body>
+</html>

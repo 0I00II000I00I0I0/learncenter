@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>学习中心</title>
+</head>
+
+<body>
+<div>
+    <h3 th:text="${message} + '欢迎你:'+ ${user.username}"></h3><br>
+    <h3>个人信息中心</h3>
+    <h3 th:text="'用户名:' + ${user.username}"></h3>
+    <h3 th:text="'真实姓名:' + ${user.realname}"></h3>
+    <h3 th:text="'手机号码:' + ${user.phonenumber}"></h3>
+    <h3 th:text="'出生日期:' + ${user.birthday}"></h3>
+    <h3 th:text="'注册时间:' + ${user.logintime}"></h3>
+</div><br>
+<form action="toupdate">
+    <input type="hidden" name="id" th:value="${user.id}"/>
+    <input type="submit" value="个人信息管理"/>
+</form><br>
+<form action="tolearn">
+    <input type="submit" value="教程管理中心"/>
+</form>
+</body>
+</html>

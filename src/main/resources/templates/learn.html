@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>教程管理中心</title>
+</head>
+<body>
+<div style="text-align: center;margin:0 auto;width: 1500px; ">
+    <h1>教程管理中心</h1>
+    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+        <tr>
+            <td>作者</td>
+            <td>教程名称</td>
+            <td>添加人</td>
+            <td>添加时间</td>
+            <td>修改人</td>
+            <td>修改时间</td>
+            <td>地址</td>
+            <td>编辑</td>
+            <td>删除</td>
+        </tr>
+        <tr th:each="learn : ${learnList}">
+            <td th:text="${learn.id}" style="display:none"></td>
+            <td th:text="${learn.author}"></td>
+            <td th:text="${learn.title}"></td>
+            <td th:text="${learn.createdby}"></td>
+            <td th:text="${learn.created}"></td>
+            <td th:text="${learn.updatedby}"></td>
+            <td th:text="${learn.updated}"></td>
+            <td><a th:href="${learn.url}" target="_blank">
+                <button>点我</button>
+            </a></td>
+            <td><a th:href="@{/toupdatelearn(id=${learn.id})}">
+                <button>编辑</button>
+            </a></td>
+            <td><a th:href="@{/deletelearn(id=${learn.id})}" onclick="return confirmAct();">
+                <button>删除</button>
+            </a></td>
+        </tr>
+    </table>
+    <div>
+        <p th:text="第+${page.pageNum}+页，共+${page.pages}+页"></p>
+        <a href="/tolearn?pageNum=1">[首  页]</a>
+        <a th:href="@{/tolearn(pageNum=${page.pageNum-1})}">[上一页]</a>
+        <a th:href="@{/tolearn(pageNum=${page.pageNum+1})}">[下一页]</a>
+        <a th:href="@{/tolearn(pageNum=${page.pages})}">[末  页]</a>
+    </div>
+    <br>
+    <form action="add">
+        作者：<input type="text" name="author" />
+        教程名称：<input type="text" name="title" />
+        地址：<input type="text" name="url" />
+        <input type="submit" value="查询教程"/>
+        <input type="submit" value="添加新教程"/>
+    </form>
+    <br>
+    <form action="logout" method="post">
+    <input type="submit" value="退出"/>
+        <input type="button" value="返回" onclick="javascript:history.back();"/>
+    </form>
+</div>
+
+<script type="text/javascript" language="javascript">
+    function confirmAct()
+    {
+        if(confirm('确定要删除吗?'))
+        {
+            return true;
+        }
+        return false;
+    }
+</script>
+</body>
+</html>
