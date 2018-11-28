@@ -14,18 +14,23 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public void add(User user) { userMapper.insertSelective(user); }
+    public void add(User user) {
+        userMapper.insertSelective(user);
+    }
 
     @Override
-    public void update(User user) { userMapper.updateByPrimaryKeySelective(user); }
+    public void update(User user) {
+        userMapper.updateByPrimaryKeySelective(user);
+    }
 
     @Override
-    public void updatepw(User user) { userMapper.updateByPrimaryKeySelective(user); }
+    public User getUser(User user) {
+        return userMapper.selectOne(user);
+    }
 
     @Override
-    public User getUser(User user) { return userMapper.selectOne(user); }
-
-    @Override
-    public User getUser(Long id){return userMapper.selectByPrimaryKey(id);}
+    public User getUser(Long id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
 
 }

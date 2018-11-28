@@ -8,8 +8,6 @@ public interface UserService {
 
     void update(User user);
 
-    void updatepw(User user);
-
     User getUser(User user);
 
     User getUser(Long id);

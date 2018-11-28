@@ -22,39 +22,39 @@ public class LearnController {
 
     /**
      * 添加教程
-     * */
+     */
     @GetMapping(value = "/add")
-    public String addResource(String author,String title,String url){
-        learnService.add(new LearnResource(author,title,url));
+    public String addResource(String author, String title, String url) {
+        learnService.add(new LearnResource(author, title, url));
         return "redirect:tolearn";
     }
 
     /**
      * 修改教程页面
-     * */
+     */
     @GetMapping(value = "/toupdatelearn")
-    public String toupdate(String id,Model model){
+    public String toupdate(String id, Model model) {
         LearnResource learnResource = new LearnResource();
         learnResource.setId(Long.valueOf(id));
         LearnResource learn = learnService.findById(learnResource);
-        model.addAttribute("learn",learn);
+        model.addAttribute("learn", learn);
         return "updatelearn";
     }
 
     /**
      * 修改教程
-     * */
+     */
     @PostMapping(value = "/updatelearn")
-    public String updateResource(String id,String author,String title,String url){
-        learnService.update(new LearnResource(Long.valueOf(id),author,title,url));
+    public String updateResource(String id, String author, String title, String url) {
+        learnService.update(new LearnResource(Long.valueOf(id), author, title, url));
         return "redirect:tolearn";
     }
 
     /**
      * 删除教程
-     * */
+     */
     @GetMapping(value = "/deletelearn")
-    public String deleteResource(String id){
+    public String deleteResource(String id) {
         LearnResource learnResource = new LearnResource();
         learnResource.setId(Long.valueOf(id));
         learnService.deleteById(learnResource);
@@ -63,23 +63,24 @@ public class LearnController {
 
     /**
      * 查询教程
-     * */
-    @RequestMapping(value = "/find",method = RequestMethod.POST)
-    public LearnResource findResource(HttpServletRequest request, HttpServletResponse response){
+     */
+    @RequestMapping(value = "/find", method = RequestMethod.POST)
+    public LearnResource findResource(HttpServletRequest request, HttpServletResponse response) {
         return null;
     }
 
     /**
      * 教程列表页面
-     * */
+     */
     @GetMapping(value = "/tolearn")
-    public String findAll(@RequestParam(required=true,defaultValue="1") Integer pageNum,
-                          @RequestParam(required=true,defaultValue="5") Integer pageSize, Model model){
-        PageHelper.startPage(pageNum,pageSize);
+    public String findAll(@RequestParam(required = true, defaultValue = "1") Integer pageNum,
+                          @RequestParam(required = true, defaultValue = "5") Integer pageSize,
+                          Model model) {
+        PageHelper.startPage(pageNum, pageSize);
         List<LearnResource> learnList = learnService.findAll();
         PageInfo<LearnResource> pageInfo = new PageInfo<>(learnList);
-        model.addAttribute("page",pageInfo);
-        model.addAttribute("learnList",learnList);
+        model.addAttribute("page", pageInfo);
+        model.addAttribute("learnList", learnList);
         return "learn";
     }
 }

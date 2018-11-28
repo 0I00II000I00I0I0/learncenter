@@ -13,17 +13,18 @@ public class MyWebMvcConfigurerAdapter implements WebMvcConfigurer {
      * 页面跳转
      */
     @Override
-    public void addViewControllers(ViewControllerRegistry registry){
+    public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/center").setViewName("login");
     }
 
     /**
      * 拦截器
-     * */
+     */
     @Override
-    public void addInterceptors(InterceptorRegistry registry){
+    public void addInterceptors(InterceptorRegistry registry) {
         //addPathPatterns添加拦截规则
         //excludePathPatterns排除拦截规则
-        registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**").excludePathPatterns("/login","/tologin","/register","/toregister");
+        registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**").excludePathPatterns("/tologin", "/toregister", "/login", "/register");
     }
+
 }

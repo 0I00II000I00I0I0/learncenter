@@ -20,7 +20,9 @@ public class LearnServiceImpl implements LearnService {
     }
 
     @Override
-    public void update(LearnResource learnResource) { learnMapper.updateByPrimaryKeySelective(learnResource); }
+    public void update(LearnResource learnResource) {
+        learnMapper.updateByPrimaryKeySelective(learnResource);
+    }
 
     @Override
     public void deleteById(LearnResource learnResource) {
@@ -28,7 +30,9 @@ public class LearnServiceImpl implements LearnService {
     }
 
     @Override
-    public LearnResource findById(LearnResource learnResource) { return learnMapper.selectByPrimaryKey(learnResource); }
+    public LearnResource findById(LearnResource learnResource) {
+        return learnMapper.selectByPrimaryKey(learnResource);
+    }
 
     @Override
     public List<LearnResource> findAll() {
